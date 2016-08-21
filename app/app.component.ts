@@ -1,94 +1,50 @@
 import { Component } from '@angular/core';
-export class Hero {
-  id: number;
-  name: string;
-}
-const HEROES: Hero[] = [
-  { id: 11, name: 'Mr. Nice' },
-  { id: 12, name: 'Narco' },
-  { id: 13, name: 'Bombasto' },
-  { id: 14, name: 'Celeritas' },
-  { id: 15, name: 'Magneta' },
-  { id: 16, name: 'RubberMan' },
-  { id: 17, name: 'Dynama' },
-  { id: 18, name: 'Dr IQ' },
-  { id: 19, name: 'Magma' },
-  { id: 20, name: 'Tornado' }
+
+import { Flickr } from './flickr';
+
+const Flickres: Flickr[] = [
+    { id: 11, url: 'https://c1.staticflickr.com/9/8501/8300920648_d4a21bba59_n.jpg', urlxl: 'https://c1.staticflickr.com/9/8501/8300920648_56ce4fb10f_k.jpg' },
+    { id: 12, url: 'https://c1.staticflickr.com/2/1558/26017368400_dc45fbb364_n.jpg', urlxl: 'https://c1.staticflickr.com/2/1558/26017368400_41dff31fbc_k.jpg' },
+    { id: 13, url: 'https://c5.staticflickr.com/4/3781/10901734724_ab15461d13_n.jpg', urlxl: 'https://c5.staticflickr.com/4/3781/10901734724_94ed12297a_k.jpg' },
+    { id: 14, url: 'https://c8.staticflickr.com/9/8486/8203155911_f29b9bf344_n.jpg', urlxl: 'https://c8.staticflickr.com/9/8486/8203155911_f29b9bf344_c.jpg' }
 ];
+
 @Component({
-  selector: 'my-app',
-  template: `
-    <h1>{{title}}</h1>
-    <h2>My Heroes</h2>
-    <ul class="heroes">
-      <li *ngFor="let hero of heroes"
-        [class.selected]="hero === selectedHero"
-        (click)="onSelect(hero)">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
-      </li>
-    </ul>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><label>id: </label>{{selectedHero.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedHero.name" placeholder="name"/>
-      </div>
-    </div>
-  `,
-  styles: [`
-    .selected {
-      background-color: #CFD8DC !important;
-      color: white;
-    }
-    .heroes {
-      margin: 0 0 2em 0;
-      list-style-type: none;
-      padding: 0;
-      width: 15em;
-    }
-    .heroes li {
-      cursor: pointer;
-      position: relative;
-      left: 0;
-      background-color: #EEE;
-      margin: .5em;
-      padding: .3em 0;
-      height: 1.6em;
-      border-radius: 4px;
-    }
-    .heroes li.selected:hover {
-      background-color: #BBD8DC !important;
-      color: white;
-    }
-    .heroes li:hover {
-      color: #607D8B;
-      background-color: #DDD;
-      left: .1em;
-    }
-    .heroes .text {
-      position: relative;
-      top: -3px;
-    }
-    .heroes .badge {
-      display: inline-block;
-      font-size: small;
-      color: white;
-      padding: 0.8em 0.7em 0 0.7em;
-      background-color: #607D8B;
-      line-height: 1em;
-      position: relative;
-      left: -1px;
-      top: -4px;
-      height: 1.8em;
-      margin-right: .8em;
-      border-radius: 4px 0 0 4px;
-    }
-  `]
+    selector: 'my-app',
+    template: `
+        <h1>{{title}}</h1>
+        <h2>My flickres</h2>
+        <ul class="flickres" >
+          <li *ngFor="let flickr of flickres" [class.selected]="flickr === selectedFlickr"
+            (click)="onSelect(flickr)">
+            <img src="{{flickr.url}}"/>
+          </li>
+        </ul>
+        <my-flickr-detail [flickr]="selectedFlickr"></my-flickr-detail>
+    `,
+    styles: [`
+        .flickres {
+          padding: 0;
+        }
+        .flickres li {
+          list-style:none;
+          display: inline-block;
+          width: 25%;
+        }
+        .flickres li img {
+          width: 100%;
+        }
+        .xl {
+          width: 100%;
+        }
+
+    `],
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
-  heroes = HEROES;
-  selectedHero: Hero;
-  onSelect(hero: Hero) { this.selectedHero = hero; }
+    title = 'Flickr images';
+    flickres = Flickres;
+    selectedFlickr: Flickr;
+    onSelect(flickr: Flickr): void {
+        this.selectedFlickr = flickr;
+    }
 }

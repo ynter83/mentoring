@@ -9,35 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var Hero = (function () {
-    function Hero() {
-    }
-    return Hero;
-}());
-exports.Hero = Hero;
-var HEROES = [
-    { id: 11, name: 'Mr. Nice' },
-    { id: 12, name: 'Narco' },
-    { id: 13, name: 'Bombasto' },
-    { id: 14, name: 'Celeritas' },
-    { id: 15, name: 'Magneta' },
-    { id: 16, name: 'RubberMan' },
-    { id: 17, name: 'Dynama' },
-    { id: 18, name: 'Dr IQ' },
-    { id: 19, name: 'Magma' },
-    { id: 20, name: 'Tornado' }
+var Flickres = [
+    { id: 11, url: 'https://c1.staticflickr.com/9/8501/8300920648_d4a21bba59_n.jpg', urlxl: 'https://c1.staticflickr.com/9/8501/8300920648_56ce4fb10f_k.jpg' },
+    { id: 12, url: 'https://c1.staticflickr.com/2/1558/26017368400_dc45fbb364_n.jpg', urlxl: 'https://c1.staticflickr.com/2/1558/26017368400_41dff31fbc_k.jpg' },
+    { id: 13, url: 'https://c5.staticflickr.com/4/3781/10901734724_ab15461d13_n.jpg', urlxl: 'https://c5.staticflickr.com/4/3781/10901734724_94ed12297a_k.jpg' },
+    { id: 14, url: 'https://c8.staticflickr.com/9/8486/8203155911_f29b9bf344_n.jpg', urlxl: 'https://c8.staticflickr.com/9/8486/8203155911_f29b9bf344_c.jpg' }
 ];
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Tour of Heroes';
-        this.heroes = HEROES;
+        this.title = 'Flickr images';
+        this.flickres = Flickres;
     }
-    AppComponent.prototype.onSelect = function (hero) { this.selectedHero = hero; };
+    AppComponent.prototype.onSelect = function (flickr) {
+        this.selectedFlickr = flickr;
+    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <h2>My Heroes</h2>\n    <ul class=\"heroes\">\n      <li *ngFor=\"let hero of heroes\"\n        [class.selected]=\"hero === selectedHero\"\n        (click)=\"onSelect(hero)\">\n        <span class=\"badge\">{{hero.id}}</span> {{hero.name}}\n      </li>\n    </ul>\n    <div *ngIf=\"selectedHero\">\n      <h2>{{selectedHero.name}} details!</h2>\n      <div><label>id: </label>{{selectedHero.id}}</div>\n      <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"selectedHero.name\" placeholder=\"name\"/>\n      </div>\n    </div>\n  ",
-            styles: ["\n    .selected {\n      background-color: #CFD8DC !important;\n      color: white;\n    }\n    .heroes {\n      margin: 0 0 2em 0;\n      list-style-type: none;\n      padding: 0;\n      width: 15em;\n    }\n    .heroes li {\n      cursor: pointer;\n      position: relative;\n      left: 0;\n      background-color: #EEE;\n      margin: .5em;\n      padding: .3em 0;\n      height: 1.6em;\n      border-radius: 4px;\n    }\n    .heroes li.selected:hover {\n      background-color: #BBD8DC !important;\n      color: white;\n    }\n    .heroes li:hover {\n      color: #607D8B;\n      background-color: #DDD;\n      left: .1em;\n    }\n    .heroes .text {\n      position: relative;\n      top: -3px;\n    }\n    .heroes .badge {\n      display: inline-block;\n      font-size: small;\n      color: white;\n      padding: 0.8em 0.7em 0 0.7em;\n      background-color: #607D8B;\n      line-height: 1em;\n      position: relative;\n      left: -1px;\n      top: -4px;\n      height: 1.8em;\n      margin-right: .8em;\n      border-radius: 4px 0 0 4px;\n    }\n  "]
+            template: "\n        <h1>{{title}}</h1>\n        <h2>My flickres</h2>\n        <ul class=\"flickres\" >\n          <li *ngFor=\"let flickr of flickres\" [class.selected]=\"flickr === selectedFlickr\"\n            (click)=\"onSelect(flickr)\">\n            <img src=\"{{flickr.url}}\"/>\n          </li>\n        </ul>\n        <my-flickr-detail [flickr]=\"selectedFlickr\"></my-flickr-detail>\n    ",
+            styles: ["\n        .flickres {\n          padding: 0;\n        }\n        .flickres li {\n          list-style:none;\n          display: inline-block;\n          width: 25%;\n        }\n        .flickres li img {\n          width: 100%;\n        }\n        .xl {\n          width: 100%;\n        }\n\n    "],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
