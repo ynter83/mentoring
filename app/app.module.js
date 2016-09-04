@@ -9,22 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var flickr_1 = require('./flickr');
-var FlickrDetailComponent = (function () {
-    function FlickrDetailComponent() {
+var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
+var app_component_1 = require('./app.component');
+var flickr_detail_component_1 = require('./flickr-detail.component');
+var AppModule = (function () {
+    function AppModule() {
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', flickr_1.Flickr)
-    ], FlickrDetailComponent.prototype, "flickr", void 0);
-    FlickrDetailComponent = __decorate([
-        core_1.Component({
-            selector: 'my-flickr-detail',
-            template: "\n        <div *ngIf=\"flickr\" >\n            <img class=\"xl\" src=\"{{flickr.urlxl}}\" />\n        </div>\n    ",
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                flickr_detail_component_1.FlickrDetailComponent
+            ],
+            bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], FlickrDetailComponent);
-    return FlickrDetailComponent;
+    ], AppModule);
+    return AppModule;
 }());
-exports.FlickrDetailComponent = FlickrDetailComponent;
-//# sourceMappingURL=flickr-detail.component.js.map
+exports.AppModule = AppModule;
+//# sourceMappingURL=app.module.js.map

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { Flickr } from './flickr';
 
@@ -6,11 +6,12 @@ import { Flickr } from './flickr';
     selector: 'my-flickr-detail',
     template: `
         <div *ngIf="flickr" >
-          <img class="xl" src="{{flickr.urlxl}}" />
+            <img class="xl" src="{{flickr.urlxl}}" />
         </div>
     `,
 })
 
 export class FlickrDetailComponent {
+    @Input()
     flickr: Flickr;
 }

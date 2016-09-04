@@ -20,7 +20,9 @@ const Flickres: Flickr[] = [
             <img src="{{flickr.url}}"/>
           </li>
         </ul>
-        <my-flickr-detail [flickr]="selectedFlickr"></my-flickr-detail>
+        <my-flickr-detail [flickr]="selectedFlickr">
+
+        </my-flickr-detail>
     `,
     styles: [`
         .flickres {
@@ -37,9 +39,12 @@ const Flickres: Flickr[] = [
         .xl {
           width: 100%;
         }
-
+        .selected {
+            opacity: 0.5;
+        }
     `],
 })
+
 export class AppComponent {
     title = 'Flickr images';
     flickres = Flickres;

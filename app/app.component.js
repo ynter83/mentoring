@@ -26,8 +26,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n        <h1>{{title}}</h1>\n        <h2>My flickres</h2>\n        <ul class=\"flickres\" >\n          <li *ngFor=\"let flickr of flickres\" [class.selected]=\"flickr === selectedFlickr\"\n            (click)=\"onSelect(flickr)\">\n            <img src=\"{{flickr.url}}\"/>\n          </li>\n        </ul>\n        <my-flickr-detail [flickr]=\"selectedFlickr\"></my-flickr-detail>\n    ",
-            styles: ["\n        .flickres {\n          padding: 0;\n        }\n        .flickres li {\n          list-style:none;\n          display: inline-block;\n          width: 25%;\n        }\n        .flickres li img {\n          width: 100%;\n        }\n        .xl {\n          width: 100%;\n        }\n\n    "],
+            template: "\n        <h1>{{title}}</h1>\n        <h2>My flickres</h2>\n        <ul class=\"flickres\" >\n          <li *ngFor=\"let flickr of flickres\" [class.selected]=\"flickr === selectedFlickr\"\n            (click)=\"onSelect(flickr)\">\n            <img src=\"{{flickr.url}}\"/>\n          </li>\n        </ul>\n        <my-flickr-detail [flickr]=\"selectedFlickr\">\n\n        </my-flickr-detail>\n    ",
+            styles: ["\n        .flickres {\n          padding: 0;\n        }\n        .flickres li {\n          list-style:none;\n          display: inline-block;\n          width: 25%;\n        }\n        .flickres li img {\n          width: 100%;\n        }\n        .xl {\n          width: 100%;\n        }\n        .selected {\n            opacity: 0.5;\n        }\n    "],
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
